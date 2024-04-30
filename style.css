@@ -1,0 +1,219 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+
+:root {
+    --primary: darkgreen;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    background: #fff;
+    min-height: 100vh;
+}
+
+#header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+#header .logo {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+#header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header ul li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+#header ul li a {
+    text-decoration: none;
+    padding: 6px 15px;
+    color: var(--primary);
+    border-radius: 20px;
+}
+
+#header ul li a:hover,
+#header ul li a.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    overflow: hidden;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, var(--primary), transparent);
+    z-index: 10;
+}
+
+section img {
+    position: relative;/* In order to move images,text based on scroll keep the style as position absolute,relative*/
+    object-fit: cover;
+    pointer-events: none;
+}
+
+#sun{
+    position: absolute;
+    top: 4vh;
+}
+
+#rock1 {
+    position: absolute;
+    width: 770px;
+    height: 500px;
+    transform: scale(-1);
+    transform: rotatey(150deg);
+    left: 0;
+    z-index: 10000;
+    top: 36vh;
+}
+
+
+#rock2{
+    position: absolute;
+    width: 770px;
+    height: 500px;
+    right: 0;
+    z-index: 10000;
+    top: 36vh;
+}
+
+#grass1 {
+    position: absolute;
+    width: 770px;
+    height: 700px;
+    transform: scale(-1);
+    transform: rotatey(150deg);
+    left: 20px;
+}
+
+
+#grass2{
+    position: absolute;
+    width: 770px;
+    height: 700px;
+    right: 20px;
+}
+
+
+
+section #text {
+    position: absolute;
+    color: var(--primary);
+    font-size: 5vw;
+    text-align: center;
+    line-height: .55em;
+    font-family: 'Rancho', cursive;
+    transform: translatey(-50%);
+}
+
+section #text span {
+    font-size: .20em;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+#btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    background: #fff;
+    color: var(--primary);
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    transform: translatey(100px); /* Makes text appear upon the other text*/
+}
+
+
+
+/* 3D card effect */
+
+.card{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+   position: relative;/*Making the card container relative will make any container within the card having position absolute to align itself with card*/
+    z-index: 1;
+}
+
+.wrapper-container{
+    position: absolute; /*Since card is relative and all the wrapper container having absolute will have image hidden below one another giving z-index -1*/
+    transition: all 0.5s;
+}
+
+img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.card-image:hover .wrapper-container{
+    transform: perspective(900px) translateY(-10%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+#image-hover{
+    z-index: -1; /*initially make 3d hovered image opacity 0  then on hover change opacity and translate 3d*/
+    opacity: 0;
+}
+
+.card-image:hover #image-hover{
+    opacity: 1;
+    transform: translate3d(0%, -50%, 100px);  
+  
+}
+
+.card-image:hover .wrapper-container { /*on hover make background image blur*/
+    opacity: 1;
+    -webkit-filter: blur(4px); 
+    filter: blur(4px);
+}
+
+.text-container{
+    padding:10%;
+    background:var(--primary);
+    height: 100%;
+}
